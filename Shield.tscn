@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://AnimateShield.gd" type="Script" id=1]
+[ext_resource path="res://Shield.tres" type="Material" id=2]
+[ext_resource path="res://Shield.gd" type="Script" id=3]
+[ext_resource path="res://ShieldHit.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SphereShape" id=1]
+radius = 2.0
+
+[sub_resource type="SphereMesh" id=2]
+radius = 2.0
+height = 4.0
+
+[node name="Shield" type="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014239, -0.618177, 0 )
+script = ExtResource( 3 )
+SPLASH_SCENE = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="ShieldVisuals" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+script = ExtResource( 1 )
+min_shield_level = 0.5
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08972, 0 )
+light_color = Color( 0.768627, 0.886275, 0.890196, 1 )
+light_energy = 3.85
+light_specular = 0.42
+omni_attenuation = 1.56917
+omni_shadow_mode = 0

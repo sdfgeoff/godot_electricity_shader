@@ -1,0 +1,70 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://BulletSplash.tres" type="Material" id=1]
+[ext_resource path="res://ParticleSystemAutoDelete.gd" type="Script" id=2]
+[ext_resource path="res://particle.png" type="Texture" id=3]
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+flag_align_y = true
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.1
+scale_curve = SubResource( 13 )
+
+[sub_resource type="SpatialMaterial" id=11]
+flags_unshaded = true
+params_blend_mode = 1
+params_cull_mode = 2
+albedo_color = Color( 0.866667, 0.482353, 0.176471, 1 )
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="QuadMesh" id=10]
+material = SubResource( 11 )
+
+[sub_resource type="Gradient" id=5]
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0.936364 ), 0.0, 2.16364, 0, 0, Vector2( 1, 0 ), -1.29394, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+direction = Vector3( 0, 1, 0 )
+spread = 90.0
+gravity = Vector3( 0, -10, 0 )
+initial_velocity = 13.25
+initial_velocity_random = 0.53
+damping = 100.0
+scale_curve = SubResource( 8 )
+color_ramp = SubResource( 6 )
+
+[sub_resource type="PlaneMesh" id=4]
+material = ExtResource( 1 )
+size = Vector2( 0.5, 0.5 )
+
+[node name="SlowGlow" type="Particles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0403081, 0 )
+amount = 1
+lifetime = 0.5
+explosiveness = 0.97
+process_material = SubResource( 9 )
+draw_pass_1 = SubResource( 10 )
+script = ExtResource( 2 )
+
+[node name="Sparks" type="Particles" parent="."]
+lifetime = 0.1
+explosiveness = 0.97
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 4 )
+script = ExtResource( 2 )
