@@ -25,11 +25,3 @@ mesh = SubResource( 2 )
 material/0 = ExtResource( 2 )
 script = ExtResource( 1 )
 min_shield_level = 0.5
-
-[node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08972, 0 )
-light_color = Color( 0.768627, 0.886275, 0.890196, 1 )
-light_energy = 3.85
-light_specular = 0.42
-omni_attenuation = 1.56917
-omni_shadow_mode = 0

@@ -1,16 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Shield.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Environment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Dropper.gd" type="Script" id=4]
+[ext_resource path="res://ShieldHolder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Camera.gd" type="Script" id=7]
 
 [node name="Spatial" type="Spatial"]
 
 [node name="Shield" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.618, 0 )
 MAX_HEALTH = 5.0
 SHIELD_REGEN_SECONDS = 7.0
+
+[node name="Spatial2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.163731, 0 )
 
 [node name="Spatial" type="Spatial" parent="."]
 script = ExtResource( 7 )
